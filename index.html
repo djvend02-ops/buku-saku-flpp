@@ -1666,7 +1666,7 @@
             line-height: 1;
         }
 
-        /* Responsive */
+        /* Responsive - Tablet Landscape */
         @media (max-width: 1024px) {
             .book-container {
                 height: auto;
@@ -1684,11 +1684,21 @@
                 padding: 1rem 0;
             }
 
+            .nav-header {
+                display: none;
+            }
+
             .nav-toc {
                 display: flex;
                 overflow-x: auto;
                 padding: 0 1rem;
                 gap: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .nav-toc::-webkit-scrollbar {
+                display: none;
             }
 
             .toc-item {
@@ -1730,112 +1740,674 @@
             }
         }
 
+        /* Responsive - Mobile Portrait */
         @media (max-width: 768px) {
+            body {
+                background: linear-gradient(160deg, #175C74 0%, #1a5c75 40%, #0f3d52 100%);
+            }
+
             .book-wrapper {
-                padding: 10px;
+                padding: 8px;
+                min-height: 100vh;
+                align-items: flex-start;
+            }
+
+            .book-container {
+                height: auto;
+                min-height: calc(100vh - 16px);
+                max-height: none;
             }
 
             .book-cover {
+                position: relative;
                 border-radius: 15px;
-                padding: 2rem 1rem;
+                padding: 2rem 1.5rem;
+                min-height: calc(100vh - 16px);
+            }
+
+            .cover-logo {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 1.5rem;
+            }
+
+            .cover-logo i {
+                font-size: 2.5rem;
             }
 
             .cover-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .cover-subtitle {
-                font-size: 0.9rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
             }
 
-            .page-body {
-                padding: 1.5rem;
+            .cover-ministry {
+                font-size: 0.8rem;
+            }
+
+            .open-book-btn {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .book-content {
+                position: relative;
+                flex-direction: column;
+                border-radius: 15px;
+                min-height: calc(100vh - 16px);
+            }
+
+            .book-spine {
+                display: none;
+            }
+
+            .page-nav {
+                width: 100%;
+                padding: 0.8rem 0;
+                flex-shrink: 0;
+            }
+
+            .nav-toc {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 0.8rem;
+                gap: 0.4rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .toc-item {
+                flex-shrink: 0;
+                padding: 0.5rem 0.8rem;
+                border-radius: 6px;
+            }
+
+            .toc-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.75rem;
+                margin-right: 0.5rem;
+            }
+
+            .toc-text h4 {
+                font-size: 0.75rem;
+            }
+
+            .toc-text span,
+            .toc-page {
+                display: none;
+            }
+
+            .page-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                min-height: 0;
             }
 
             .page-header {
-                padding: 1rem 1.5rem;
-                flex-direction: column;
+                padding: 0.8rem 1rem;
+                flex-direction: row;
                 gap: 0.5rem;
-                text-align: center;
+                text-align: left;
+                flex-shrink: 0;
+            }
+
+            .page-title {
+                gap: 0.5rem;
+            }
+
+            .page-title i {
+                font-size: 1.1rem;
             }
 
             .page-title h1 {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
 
+            .page-number {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .page-body {
+                flex: 1;
+                padding: 1rem;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .page-footer {
+                padding: 0.6rem 1rem;
+                flex-shrink: 0;
+            }
+
+            .footer-nav {
+                gap: 0.4rem;
+            }
+
+            .footer-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+                border-radius: 6px;
+            }
+
+            .footer-info {
+                display: none;
+            }
+
+            /* Hero Section Mobile */
             .hero-section {
-                padding: 2rem 1.5rem;
+                padding: 1.2rem;
+                border-radius: 12px;
+                margin-bottom: 1rem;
             }
 
             .hero-section h2 {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .hero-section p {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
             }
 
             .hero-stats {
-                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+
+            .stat-item {
+                padding: 0.8rem 0.5rem;
+                border-radius: 8px;
             }
 
             .stat-number {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            /* Quick Links Mobile */
             .quick-links {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
             }
 
-            .chat-widget {
-                right: 10px;
-                left: 10px;
-                width: auto;
-                bottom: 100px;
+            .quick-link {
+                padding: 1rem 0.8rem;
+                border-radius: 10px;
             }
 
+            .quick-link i {
+                font-size: 1.3rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .quick-link h4 {
+                font-size: 0.8rem;
+            }
+
+            .quick-link p {
+                font-size: 0.65rem;
+            }
+
+            /* Content Cards Mobile */
+            .content-card {
+                padding: 1rem;
+                border-radius: 10px;
+                margin-bottom: 0.8rem;
+            }
+
+            .card-header {
+                gap: 0.6rem;
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.6rem;
+            }
+
+            .card-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .card-content {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            /* Zone Cards Mobile */
+            .zone-grid {
+                gap: 0.8rem;
+            }
+
+            .zone-card {
+                border-radius: 10px;
+            }
+
+            .zone-header {
+                padding: 0.8rem 1rem;
+            }
+
+            .zone-header h3 {
+                font-size: 1rem;
+            }
+
+            .zone-header p {
+                font-size: 0.7rem;
+            }
+
+            .zone-body {
+                padding: 0.8rem 1rem;
+            }
+
+            .zone-row {
+                padding: 0.5rem 0;
+                font-size: 0.85rem;
+            }
+
+            .zone-max {
+                font-size: 0.85rem;
+                margin-top: 0.6rem;
+                padding-top: 0.6rem;
+            }
+
+            /* Calculator Mobile */
+            .calculator-container {
+                border-radius: 12px;
+            }
+
+            .calc-header {
+                padding: 1rem;
+            }
+
+            .calc-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .calc-header p {
+                font-size: 0.8rem;
+            }
+
+            .calc-body {
+                padding: 1rem;
+            }
+
+            .form-group {
+                margin-bottom: 0.8rem;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            .calc-btn {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            .calc-result {
+                padding: 1rem;
+                margin-top: 1rem;
+                border-radius: 10px;
+            }
+
+            .result-header h4 {
+                font-size: 1rem;
+            }
+
+            .result-grid {
+                gap: 0.4rem;
+            }
+
+            .result-item {
+                padding: 0.6rem 0.8rem;
+                border-radius: 6px;
+                font-size: 0.85rem;
+            }
+
+            .result-item.highlight .result-value {
+                font-size: 1.1rem;
+            }
+
+            /* Timeline Mobile */
+            .timeline {
+                padding: 1rem 0;
+            }
+
+            .timeline::before {
+                left: 16px;
+                width: 2px;
+            }
+
+            .timeline-item {
+                padding-left: 45px;
+                margin-bottom: 1rem;
+            }
+
+            .timeline-number {
+                left: 0;
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+
+            .timeline-content {
+                padding: 0.8rem;
+                border-radius: 8px;
+            }
+
+            .timeline-content h4 {
+                font-size: 0.95rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.8rem;
+            }
+
+            /* Banks Grid Mobile */
+            .banks-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+
+            .bank-card {
+                padding: 0.8rem;
+                border-radius: 8px;
+            }
+
+            .bank-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+                border-radius: 6px;
+                margin-bottom: 0.4rem;
+            }
+
+            .bank-name {
+                font-size: 0.75rem;
+            }
+
+            /* FAQ Mobile */
+            .faq-item {
+                border-radius: 8px;
+                margin-bottom: 0.6rem;
+            }
+
+            .faq-question {
+                padding: 0.9rem;
+            }
+
+            .faq-question h4 {
+                font-size: 0.9rem;
+            }
+
+            .faq-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 0.9rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            /* Document List Mobile */
+            .doc-list {
+                gap: 0.5rem;
+            }
+
+            .doc-item {
+                padding: 0.7rem;
+                font-size: 0.85rem;
+                gap: 0.6rem;
+            }
+
+            .doc-item i {
+                font-size: 0.9rem;
+            }
+
+            /* Stories Slider Mobile */
+            .stories-container {
+                gap: 0.8rem;
+                padding: 0.5rem 0;
+            }
+
+            .story-card {
+                min-width: 240px;
+                padding: 1rem;
+                border-radius: 10px;
+            }
+
+            .story-header {
+                gap: 0.6rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .story-avatar {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+
+            .story-info h4 {
+                font-size: 0.85rem;
+            }
+
+            .story-info p {
+                font-size: 0.7rem;
+            }
+
+            .story-content {
+                font-size: 0.8rem;
+                padding-left: 1rem;
+            }
+
+            .story-content::before {
+                font-size: 1.5rem;
+                top: -3px;
+            }
+
+            /* Floating Elements Mobile */
             .wa-float {
-                right: 15px;
-                bottom: 20px;
+                right: 12px;
+                bottom: 15px;
             }
 
             .wa-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.6rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
             }
 
             .wa-tooltip {
                 display: none;
             }
 
+            .chat-widget {
+                right: 8px;
+                left: 8px;
+                bottom: 75px;
+                width: auto;
+                border-radius: 14px;
+            }
+
+            .chat-header {
+                padding: 1rem;
+            }
+
+            .chat-avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .chat-avatar i {
+                font-size: 1.2rem;
+            }
+
+            .chat-info h4 {
+                font-size: 0.95rem;
+            }
+
+            .chat-info p {
+                font-size: 0.75rem;
+            }
+
+            .chat-body {
+                padding: 1rem;
+                min-height: 150px;
+            }
+
+            .chat-bubble p {
+                font-size: 0.85rem;
+            }
+
+            .quick-questions {
+                gap: 0.4rem;
+            }
+
+            .quick-q {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.7rem;
+            }
+
+            .chat-footer {
+                padding: 0.8rem;
+            }
+
+            .chat-start-btn {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
             .monitor-btn {
-                left: 15px;
-                bottom: 20px;
-                width: 45px;
-                height: 45px;
+                left: 12px;
+                bottom: 15px;
+                width: 42px;
+                height: 42px;
+                font-size: 0.9rem;
             }
 
             .monitor-panel {
-                left: 10px;
-                right: 10px;
+                left: 8px;
+                right: 8px;
+                bottom: 70px;
                 width: auto;
-                bottom: 80px;
+                border-radius: 14px;
             }
 
-            .banks-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .monitor-header {
+                padding: 0.9rem 1rem;
             }
 
-            .timeline::before {
-                left: 20px;
+            .monitor-header h4 {
+                font-size: 0.9rem;
             }
 
-            .timeline-item {
-                padding-left: 60px;
+            .monitor-body {
+                padding: 1rem;
             }
 
-            .timeline-number {
-                left: 2px;
-                width: 35px;
-                height: 35px;
+            .monitor-stat {
+                padding: 0.7rem;
+                margin-bottom: 0.5rem;
+                border-radius: 8px;
+            }
+
+            .monitor-stat-info h5 {
+                font-size: 0.7rem;
+            }
+
+            .monitor-stat-info span {
                 font-size: 1rem;
+            }
+
+            .monitor-stat i {
+                font-size: 1.1rem;
+            }
+
+            .monitor-chart {
+                padding: 0.8rem;
+            }
+
+            .chart-title {
+                font-size: 0.75rem;
+            }
+
+            .chart-bars {
+                height: 60px;
+            }
+
+            .chart-bar::after {
+                font-size: 0.6rem;
+                bottom: -18px;
+            }
+        }
+
+        /* Extra Small Devices */
+        @media (max-width: 380px) {
+            .book-wrapper {
+                padding: 5px;
+            }
+
+            .cover-title {
+                font-size: 1.4rem;
+            }
+
+            .cover-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .toc-item {
+                padding: 0.4rem 0.6rem;
+            }
+
+            .toc-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 0.65rem;
+                margin-right: 0.4rem;
+            }
+
+            .toc-text h4 {
+                font-size: 0.7rem;
+            }
+
+            .page-title h1 {
+                font-size: 1rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.1rem;
+            }
+
+            .stat-number {
+                font-size: 1rem;
+            }
+
+            .quick-link h4 {
+                font-size: 0.75rem;
             }
         }
 
@@ -1960,13 +2532,21 @@
                             </div>
                             <span class="toc-page">07</span>
                         </div>
+                        <div class="toc-item" onclick="showPage('legal')">
+                            <div class="toc-icon"><i class="fas fa-gavel"></i></div>
+                            <div class="toc-text">
+                                <h4>Dasar Hukum</h4>
+                                <span>Regulasi & Sumber</span>
+                            </div>
+                            <span class="toc-page">08</span>
+                        </div>
                         <div class="toc-item" onclick="showPage('faq')">
                             <div class="toc-icon"><i class="fas fa-question-circle"></i></div>
                             <div class="toc-text">
                                 <h4>FAQ</h4>
                                 <span>Tanya Jawab</span>
                             </div>
-                            <span class="toc-page">08</span>
+                            <span class="toc-page">09</span>
                         </div>
                     </div>
 
@@ -2583,6 +3163,129 @@
                             </div>
                         </div>
 
+                        <!-- Dasar Hukum Page -->
+                        <div class="page-section" id="page-legal">
+                            <div class="content-card" style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal)); color: white; border: none; margin-bottom: 2rem;">
+                                <div class="card-content" style="text-align: center;">
+                                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: white;"><i class="fas fa-gavel"></i> Dasar Hukum Program FLPP</h3>
+                                    <p style="opacity: 0.9; color: white;">Regulasi yang mendasari program pembiayaan perumahan</p>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                                    <h3 class="card-title">Undang-Undang</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="doc-list">
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-balance-scale" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">UU No. 1 Tahun 2011</strong>
+                                            </div>
+                                            <span>Tentang Perumahan dan Kawasan Permukiman</span>
+                                        </div>
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-balance-scale" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">UU No. 4 Tahun 2016</strong>
+                                            </div>
+                                            <span>Tentang Tabungan Perumahan Rakyat (Tapera)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <div class="card-icon"><i class="fas fa-file-contract"></i></div>
+                                    <h3 class="card-title">Peraturan Pemerintah</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="doc-list">
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-scroll" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">PP No. 25 Tahun 2020</strong>
+                                            </div>
+                                            <span>Tentang Penyelenggaraan Tabungan Perumahan Rakyat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                                    <h3 class="card-title">Peraturan Menteri & Keputusan</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="doc-list">
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-file-signature" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">Permen PUPR No. 1 Tahun 2021</strong>
+                                            </div>
+                                            <span>Tentang Kriteria Masyarakat Berpenghasilan Rendah dan Persyaratan Kemudahan Pembangunan dan Perolehan Rumah</span>
+                                        </div>
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-file-signature" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">Kepmen PKP No. 242 Tahun 2024</strong>
+                                            </div>
+                                            <span>Tentang Batasan Penghasilan, Harga Jual Rumah, dan Besaran Subsidi Bantuan Uang Muka Program KPR FLPP</span>
+                                        </div>
+                                        <div class="doc-item" style="flex-direction: column; align-items: flex-start;">
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                                                <i class="fas fa-file-signature" style="color: var(--secondary-gold);"></i>
+                                                <strong style="color: var(--primary-blue);">Peraturan BP Tapera No. 1 Tahun 2024</strong>
+                                            </div>
+                                            <span>Tentang Pembiayaan Perumahan melalui Fasilitas Likuiditas Pembiayaan Perumahan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card" style="background: linear-gradient(135deg, rgba(23, 92, 116, 0.05), rgba(30, 138, 138, 0.05)); border: 2px dashed var(--secondary-gold);">
+                                <div class="card-header">
+                                    <div class="card-icon" style="background: var(--secondary-gold);"><i class="fas fa-link" style="color: var(--primary-blue);"></i></div>
+                                    <h3 class="card-title">Sumber Data & Referensi</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="doc-list">
+                                        <div class="doc-item">
+                                            <i class="fas fa-globe" style="color: var(--accent-teal);"></i>
+                                            <span><strong>pkp.go.id</strong> - Website Resmi Kementerian PKP</span>
+                                        </div>
+                                        <div class="doc-item">
+                                            <i class="fas fa-globe" style="color: var(--accent-teal);"></i>
+                                            <span><strong>tapera.go.id</strong> - Website Resmi BP Tapera</span>
+                                        </div>
+                                        <div class="doc-item">
+                                            <i class="fas fa-globe" style="color: var(--accent-teal);"></i>
+                                            <span><strong>sikasep.tapera.go.id</strong> - Sistem Informasi KPR Subsidi</span>
+                                        </div>
+                                        <div class="doc-item">
+                                            <i class="fas fa-globe" style="color: var(--accent-teal);"></i>
+                                            <span><strong>jdih.pu.go.id</strong> - JDIH Kementerian PUPR</span>
+                                        </div>
+                                        <div class="doc-item">
+                                            <i class="fas fa-globe" style="color: var(--accent-teal);"></i>
+                                            <span><strong>peraturan.bpk.go.id</strong> - Database Peraturan BPK</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card" style="text-align: center;">
+                                <div class="card-content">
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;"><i class="fas fa-info-circle"></i> Data diperbarui sesuai regulasi terkini per tahun 2024</p>
+                                    <p style="color: var(--primary-blue); font-weight: 600; margin-top: 0.5rem;">Hubungi Klinik PKP untuk informasi dan pembaruan terbaru</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- FAQ Page -->
                         <div class="page-section" id="page-faq">
                             <div class="faq-item">
@@ -2807,7 +3510,7 @@
         }
 
         // Pages Configuration
-        const pages = ['home', 'about', 'zones', 'calculator', 'process', 'documents', 'banks', 'faq'];
+        const pages = ['home', 'about', 'zones', 'calculator', 'process', 'documents', 'banks', 'legal', 'faq'];
         const pageInfo = {
             home: { title: 'Beranda', icon: 'fa-home', num: '01' },
             about: { title: 'Tentang FLPP', icon: 'fa-info-circle', num: '02' },
@@ -2816,7 +3519,8 @@
             process: { title: 'Alur Pengajuan', icon: 'fa-clipboard-list', num: '05' },
             documents: { title: 'Dokumen Persyaratan', icon: 'fa-file-alt', num: '06' },
             banks: { title: 'Bank Penyalur', icon: 'fa-university', num: '07' },
-            faq: { title: 'FAQ', icon: 'fa-question-circle', num: '08' }
+            legal: { title: 'Dasar Hukum', icon: 'fa-gavel', num: '08' },
+            faq: { title: 'FAQ', icon: 'fa-question-circle', num: '09' }
         };
 
         let currentPage = 'home';
